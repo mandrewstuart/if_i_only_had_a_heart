@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Captcha Games</title>
+</head>
+
+<body style="background-color: aquamarine;">
+    <style>
+        input[type='checkbox'] {
+            width: 30px;
+            height: 30px;
+        }
+
+        input[type='checkbox']:hover~ {
+            background-color: #ccc;
+        }
+
+        input[type='checkbox']:checked~input {
+            background-color: #2196F3;
+        }
+
+        input[type='checkbox']:after {
+            position: absolute;
+            display: none;
+        }
+
+        input[type='checkbox']:checked~input:after {
+            display: block;
+        }
+
+
+        [type="checkbox"]::before {
+            content: "✕";
+        }
+
+        input[type='checkbox']:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    </style>
+
+    <script>
+        function answer(a) {
+            document.getElementById('questions').style.display = "none";
+            if (a === 1) {
+                document.getElementById('yes').style.display = "block";
+            } else {
+                document.getElementById('no').style.display = "block";
+            }
+        }
+        function askQuestions() {
+            document.getElementById('please').style.display = "none";
+            document.getElementById('questions').style.display = "block";
+        }
+    </script>
+
+    <!-- spacer -->
+    <div style="height: 100px"></div>
+    <!-- first screen -->
+    <div id="please" style="margin: auto; background: burlywood; width: 600px; border-style: solid; border-color: darkcyan;">
+        <p>Please click the checkbox below to proceed.</p>
+        <div style="border-style: solid; border-color: darkcyan; padding: 10px;">
+            <input type="checkbox" id="start"/>
+            <span>I am not a robot</span>
+        </div>
+    </div>
+
+    <!-- question screen -->
+    <div id="questions" style="display: none; margin: auto; background: white; width: 600px; padding: 5px">
+        <div style="background-color: rgb(0, 132, 255); padding: 20px;">Answer the question <b>humanely</b>. <br> I have
+            access to my friend's browser. What do I do?</div>
+        <div style="display: block; width: 100%; border-style: solid; margin-right: -20px; ">
+            <div style="margin: 15px;">
+                <p onclick="answer(0)">Sell their browsing history to a data broker.</p>
+                <p onclick="answer(0)">Fingerprint their browser so data brokers can track them accross the web.</p>
+                <p onclick="answer(0)">Use web requests to scan for other open ports on their network.</p>
+                <p onclick="answer(0)">Intercept their usernames, passwords, and session tokens and send them to your own server.</p>
+                <p onclick="answer(1)">Let them know you got access and stop looking.</p>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; margin: 15px;"><span>Acessibility</span><span
+                style="background-color: rgb(0, 132, 255); padding: 10px;">Skip/Verify</span></div>
+    </div>
+
+    <!-- human!! -->
+    <div id="yes" style="display: none; margin: auto; background: burlywood; width: 600px; border-style: solid; border-color: darkcyan;">
+        <div>
+            <div style="border-style: solid; border-color: darkcyan; margin: 10px;">
+                <input type="checkbox" checked="checked" />
+                <span>Congratulations! You are not a robot</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- we got a real robot here -->
+    <div id="no" style="display: none; margin: auto; background: burlywood; width: 600px; border-style: solid; border-color: darkcyan;">
+        <div>
+            <div style="border-style: solid; border-color: darkcyan; margin: 10px;">
+                <input type="checkbox" disabled checked="checked"/>
+                <span>You might not be a robot, but you're inhumane.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('start').addEventListener('click', askQuestions)
+    </script>
+</body>
+
+</html>
