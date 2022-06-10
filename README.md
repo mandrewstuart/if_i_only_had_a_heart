@@ -9,3 +9,5 @@ Machine learning and artificial intelligence is guided by its data. We accumulat
 Life-side androids are not far from mass production. Will they be humane? They will not, unless there is data that describes humane and inhumane behaviour.
 
 This work describes privacy violations that occur within the browser. What kind of violations will occur when algorithms have legs?
+
+[Project link](https://mandrewstuart.github.io/if_i_only_had_a_heart/)
